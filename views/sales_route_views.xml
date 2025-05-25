@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_sales_route_form" model="ir.ui.view">
+        <field name="name">sales.route.form</field>
+        <field name="model">sales.route</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="region"/>
+                        <field name="visit_days"/>
+                        <field name="sales_rep_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_sales_route_tree" model="ir.ui.view">
+        <field name="name">sales.route.tree</field>
+        <field name="model">sales.route</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="region"/>
+                <field name="sales_rep_id"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

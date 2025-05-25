@@ -1,0 +1,20 @@
+{
+    'name': 'sales_route',
+    'version': '2.0',
+    'summary': 'Manage Sales Routes and Assign them to Sales Reps',
+    'author': 'bahaa',
+    'category': 'Sales',
+    'depends': ['base','sale_management'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/sales_dashboard_views.xml',
+        'views/menu.xml',
+         'views/customer_stock_views.xml',
+        'views/actions.xml',
+        'views/sales_route_views.xml',
+        'views/customer_visit_views.xml',
+        'views/res_partner_views.xml',
+    ],
+    'installable': True,
+    "application": True,
+}

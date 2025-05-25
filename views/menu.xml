@@ -1,0 +1,97 @@
+<odoo>
+
+  <!-- ================= Actions ================= -->
+  <record id="action_sales_route" model="ir.actions.act_window">
+    <field name="name">All Routes</field>
+    <field name="res_model">sales.route</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="action_customer_visit" model="ir.actions.act_window">
+    <field name="name">All Visits</field>
+    <field name="res_model">customer.visit</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="action_sales_representative" model="ir.actions.act_window">
+    <field name="name">All Representatives</field>
+    <field name="res_model">sales.representative</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+    <record id="action_customer_stock" model="ir.actions.act_window">
+        <field name="name">Customer Stock</field>
+        <field name="res_model">customer.stock</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<record id="action_sales_dashboard1" model="ir.actions.act_window">
+    <field name="name">Sales Dashboard</field>
+    <field name="res_model">customer.visit</field>
+    <field name="view_mode">kanban,tree</field>
+    <field name="view_id" ref="sales_route.view_customer_visit_kanban_dashboard"/>
+</record>
+
+    <record id="action_customer_stock_pivot" model="ir.actions.act_window">
+        <field name="name">Inventory Pivot</field>
+        <field name="res_model">customer.stock</field>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="sales_route.view_customer_stock_pivot"/>
+        <field name="help" type="html">
+            <p>
+                View product inventory levels per customer and track restock needs.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_customers_by_route" model="ir.actions.act_window">
+        <field name="name">Customers by Route</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="sales_route.view_partner_tree_by_route"/>
+        <field name="search_view_id" ref="sales_route.view_partner_search_route"/>
+       <field name="context">{'group_by': ['sales_rep_id','route_id']}</field>
+    </record>
+  <!-- ================= Menus ================= -->
+
+  <!-- Root Menu -->
+  <menuitem id="menu_sales_management_root2"  action="action_sales_dashboard1"  name="Sales Management"/>
+
+  <!-- dashboard Menu --> 
+<menuitem id="menu_dashboard_main" name="Dashboard" parent="menu_sales_management_root2" sequence="1"/>
+<menuitem id="menu_sales_dashboard1"
+          name="Dashboard1"
+          parent="menu_dashboard_main"
+          action="action_sales_dashboard1"/> 
+
+<menuitem id="menu_sales_dashboard2"
+          name="Dashboard2"
+          parent="menu_dashboard_main"
+          action="action_customer_stock_pivot"/> 
+
+<menuitem id="menu_sales_dashboard3"
+          name="Dashboard3"
+          parent="menu_dashboard_main"
+          action="action_customers_by_route"/> 
+<!-- Routes Menu -->
+<menuitem id="menu_sales_routes" name="Routes" parent="menu_sales_management_root2" sequence="10"/>
+<menuitem id="menu_sales_routes_action" name="All Routes" parent="menu_sales_routes" action="action_sales_route" sequence="1"/>
+
+  <!-- Customer Visits Menu -->
+  <menuitem id="menu_customer_visits" name="Customer Visits" parent="menu_sales_management_root2" sequence="20"/>
+  <menuitem id="menu_customer_visits_action" name="All Visits" parent="menu_customer_visits" action="action_customer_visit" sequence="1"/>
+
+  <!-- Sales Representatives Menu -->
+  <menuitem id="menu_sales_representatives" name="Sales Representatives" parent="menu_sales_management_root2" sequence="30"/>
+  <menuitem id="menu_sales_representatives_action" name="All Representatives" parent="menu_sales_representatives" action="action_sales_representative" sequence="1"/>
+  <!-- Inventory Monitoring Menu -->
+  <menuitem id="menu_inventory_monitoring" name="Inventory Monitoring" parent="menu_sales_management_root2" sequence="40"/>
+  <menuitem id="menu_customer_inventory_action" name="Customer Inventory" parent="menu_inventory_monitoring" action="action_customer_stock" sequence="1"/>
+
+<!-- Customers Menu -->
+<menuitem id="menu_customer_management" name="Customer Management" parent="menu_sales_management_root2" sequence="50"/>
+<menuitem id="menu_customer_action" name="Customers" parent="menu_customer_management" action="base.action_partner_form" sequence="1"/>
+
+
+
+</odoo>

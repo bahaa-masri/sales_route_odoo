@@ -1,0 +1,12 @@
+<odoo>
+    <record id="action_stock_by_customer" model="ir.actions.act_window">
+        <field name="name">Customer Stock</field>
+        <field name="res_model">customer.stock</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_customer_stock_tree"/>
+      <field name="context">{}</field>
+        <field name="domain">
+            [('customer_id', '=', context.get('customer_id') or context.get('search_default_customer_id'))]
+        </field>
+    </record> 
+</odoo>

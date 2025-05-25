@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_partner_form_inherit_route" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.sales.route</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+        <xpath expr="//field[@name='company_id']" position="after">
+            <group >
+                <div class="d-flex align-items-center" style="gap: 10px;">
+                    <div style="flex: 1;">
+                        <label for="total_sales_amount"
+                            style="
+                                display: inline-block;
+                                height: 36px;
+                                line-height: 36px;
+                                margin-right: 8px;
+                                font-weight: 500;
+                            ">
+                            Total Sales Amount
+                        </label>
+                        <field name="total_sales_amount" readonly="1" style="width: 200px; height: 36px; line-height: 36px;"/>
+                    </div>
+                    <div style="flex-shrink: 0;">
+                        <button name="%(action_stock_by_customer)d"
+                            string="View Customer Stock"
+                            type="action"
+                            class="oe_highlight"
+                            context="{'search_default_customer_id': active_id}"
+                            style="
+                                height: 36px;
+                                padding: 0 14px;
+                                white-space: nowrap;
+                                line-height: 36px;
+                                text-align: center;
+                                display: inline-block;
+                            "/>
+                    </div>
+                </div>
+            </group>
+        </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id,perm_read,perm_write,perm_create,perm_unlink
+access_sales_route_user,sales.route user,model_sales_route,,1,1,1,1
+access_sales_representative_user,sales.representative user,model_sales_representative,,1,1,1,1
+access_customer_visit_user,customer.visit user,model_customer_visit,,1,1,1,1
+access_customer_stock_user,customer.stock user,model_customer_stock,,1,1,1,1

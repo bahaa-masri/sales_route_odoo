@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_customer_stock_tree" model="ir.ui.view">
+        <field name="name">customer.stock.tree</field>
+        <field name="model">customer.stock</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id"/>
+                <field name="customer_id"/>
+                <field name="quantity_on_hand"/>
+                <field name="threshold"/>
+                <field name="needs_restock"/>
+                <field name="last_updated"/>
+                <field name="sales_rep_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_customer_stock_form" model="ir.ui.view">
+        <field name="name">customer.stock.form</field>
+        <field name="model">customer.stock</field>
+        <field name="arch" type="xml">
+            <form string="Customer Stock">
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="customer_id"/>
+                        <field name="quantity_on_hand"/>
+                        <field name="threshold"/>
+                        <field name="needs_restock" readonly="1"/>
+                        <field name="last_updated" readonly="1"/>
+                        <field name="sales_rep_id"/>
+                        <!-- <field name="restock_rounds" readonly="1"/> -->
+                    </group>
+                   <div class="d-flex align-items-center" style="gap: 8px; height: 36px;">
+                            <label for="restock_rounds" style="margin: 0; white-space: nowrap; display: inline-block; line-height: 36px;">Restock Rounds:</label>
+                            <field name="restock_rounds" style="width: 80px; height: 36px; line-height: 36px;" readonly="1"/>
+                            <button name="reset_restock_rounds"
+                                    string="⟳"
+                                    type="object"
+                                    class="btn btn-secondary"
+                                    style="height: 36px; width: 36px; padding: 0; text-align: center; line-height: 36px;"/>
+                        </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

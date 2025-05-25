@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_partner_tree_by_route" model="ir.ui.view">
+        <field name="name">res.partner.tree.grouped.by.route</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Customers">
+                <field name="name"/>
+                 <field name="route_name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_partner_search_route" model="ir.ui.view">
+        <field name="name">res.partner.search.grouped.by.route</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_sales_rep" string="Sales Rep" context="{'group_by': 'sales_rep_id'}"/>
+
+                    <filter name="group_by_route" string="Route"
+                            context="{'group_by': 'route_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="view_customer_visit_kanban_dashboard" model="ir.ui.view">
+        <field name="name">customer.visit.kanban.dashboard</field>
+        <field name="model">customer.visit</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="visit_date"/>
+                <field name="check_in"/>
+                <field name="customer_feedback"/>
+                <field name="visit_outcome"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click card shadow p-2 mb-2">
+                            <strong><field name="name"/></strong>
+                            <div>Customer: <field name="customer_id"/></div>
+                            <div>Date: <field name="visit_date"/></div>
+                            <div>Status:
+                                <t t-if="record.check_in and record.check_in.raw_value">
+                                    ✅ Checked In
+                                </t>
+                                <t t-else="">
+                                    ❌ Pending
+                                </t>
+                            </div>
+                            <div>Customer Feedback: <field name="customer_feedback"/></div>
+                             <div>visit Outcome: <field name="visit_outcome"/></div>
+                             <div>products need restock: <field name="products_need_restock_count"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_customer_stock_pivot" model="ir.ui.view">
+        <field name="name">customer.stock.pivot</field>
+        <field name="model">customer.stock</field>
+        <field name="arch" type="xml">
+            <pivot string="Customer Stock Status">
+                <field name="customer_id" type="row"/>
+                <field name="product_id" type="col"/>
+                <field name="quantity_on_hand" string='Quantity' type="measure"/>
+                <field name="threshold" string='Threshold' type="measure"/>
+                <!-- <field name="needs_restock" type="row" /> -->
+                <!-- <field name="needs_restock" type="measure" /> -->
+               <field name="restock_status" type="col"/>
+                <field name="restock_indicator"  string='Restock' type="measure"/>
+
+            </pivot>
+        </field>
+    </record>
+
+</odoo>
+
+
+

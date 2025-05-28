@@ -7,7 +7,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="region"/>
+                        <field name="region_ids"/>
                         <field name="visit_days"/>
                         <field name="sales_rep_id"/>
                     </group>
@@ -21,7 +21,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="region"/>
+                <field name="region_ids"/>
                 <field name="sales_rep_id"/>
             </tree>
         </field>

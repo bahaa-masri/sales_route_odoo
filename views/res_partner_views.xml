@@ -8,7 +8,7 @@
             <group >
                 <div class="d-flex align-items-center" style="gap: 10px;">
                     <div style="flex: 1;">
-                        <label for="total_sales_amount"
+                        <label for="region_id"
                             style="
                                 display: inline-block;
                                 height: 36px;
@@ -16,9 +16,10 @@
                                 margin-right: 8px;
                                 font-weight: 500;
                             ">
-                            Total Sales Amount
+                           region id
                         </label>
-                        <field name="total_sales_amount" readonly="1" style="width: 200px; height: 36px; line-height: 36px;"/>
+                        <field name="region_id" readonly="0" style="width: 200px; height: 36px; line-height: 36px;"/>
+                        <!-- <field name="region_id"/> -->
                     </div>
                     <div style="flex-shrink: 0;">
                         <button name="%(action_stock_by_customer)d"

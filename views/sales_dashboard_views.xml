@@ -6,7 +6,6 @@
         <field name="arch" type="xml">
             <tree string="Customers">
                 <field name="name"/>
-                 <field name="route_name"/>
             </tree>
         </field>
     </record>

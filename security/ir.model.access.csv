@@ -1,5 +1,12 @@
-id,name,model_id:id,group_id,perm_read,perm_write,perm_create,perm_unlink
-access_sales_route_user,sales.route user,model_sales_route,,1,1,1,1
-access_sales_representative_user,sales.representative user,model_sales_representative,,1,1,1,1
-access_customer_visit_user,customer.visit user,model_customer_visit,,1,1,1,1
-access_customer_stock_user,customer.stock user,model_customer_stock,,1,1,1,1
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sales_route_salesperson,Sales Route Access (Salesperson),model_sales_route,sales_route.group_salesperson,1,0,0,0
+access_sales_rep_salesperson,Sales Rep Access (Salesperson),model_sales_representative,sales_route.group_salesperson,1,0,0,0
+access_customer_visit_salesperson,Customer Visit Access (Salesperson),model_customer_visit,sales_route.group_salesperson,1,1,1,0
+access_customer_stock_salesperson,Customer Stock Access (Salesperson),model_customer_stock,sales_route.group_salesperson,1,1,1,0
+access_region_salesperson,Region Access (Salesperson),model_region,sales_route.group_salesperson,1,0,0,0
+
+access_sales_route_manager,Sales Route Access (Manager),model_sales_route,sales_route.group_sales_manager,1,1,1,1
+access_sales_rep_manager,Sales Rep Access (Manager),model_sales_representative,sales_route.group_sales_manager,1,1,1,1
+access_customer_visit_manager,Customer Visit Access (Manager),model_customer_visit,sales_route.group_sales_manager,1,1,1,1
+access_customer_stock_manager,Customer Stock Access (Manager),model_customer_stock,sales_route.group_sales_manager,1,1,1,1
+access_region_manager,Region Access (Manager),model_region,sales_route.group_sales_manager,1,1,1,1

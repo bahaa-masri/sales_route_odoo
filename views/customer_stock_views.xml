@@ -10,7 +10,7 @@
                 <field name="customer_id"/>
                 <field name="quantity_on_hand"/>
                 <field name="threshold"/>
-                <field name="needs_restock"/>
+                <field name="restock_status_for_color" widget="badge" decoration-danger="restock_status_for_color == 'no'" decoration-success="restock_status_for_color == 'yes'"/>
                 <field name="last_updated"/>
                 <field name="sales_rep_id"/>
             </tree>
@@ -28,20 +28,15 @@
                         <field name="customer_id"/>
                         <field name="quantity_on_hand"/>
                         <field name="threshold"/>
-                        <field name="needs_restock" readonly="1"/>
+                        <field name="restock_status_for_color" widget="badge" decoration-danger="restock_status_for_color == 'no'" decoration-success="restock_status_for_color == 'yes'"/>
                         <field name="last_updated" readonly="1"/>
                         <field name="sales_rep_id"/>
-                        <!-- <field name="restock_rounds" readonly="1"/> -->
                     </group>
-                   <div class="d-flex align-items-center" style="gap: 8px; height: 36px;">
-                            <label for="restock_rounds" style="margin: 0; white-space: nowrap; display: inline-block; line-height: 36px;">Restock Rounds:</label>
-                            <field name="restock_rounds" style="width: 80px; height: 36px; line-height: 36px;" readonly="1"/>
-                            <button name="reset_restock_rounds"
-                                    string="⟳"
-                                    type="object"
-                                    class="btn btn-secondary"
-                                    style="height: 36px; width: 36px; padding: 0; text-align: center; line-height: 36px;"/>
-                        </div>
+                    <div class="d-flex align-items-center" style="gap: 8px; height: 36px;">
+                        <label for="restock_rounds" style="margin: 0; white-space: nowrap; display: inline-block; line-height: 36px;">Restock Rounds:</label>
+                        <field name="restock_rounds" style="width: 80px; height: 36px; line-height: 36px;" readonly="1"/>
+                        <button name="reset_restock_rounds" string="⟳" type="object" class="btn btn-secondary" style="height: 36px; width: 36px; padding: 0; text-align: center; line-height: 36px;"/>
+                    </div>
                 </sheet>
             </form>
         </field>

@@ -10,7 +10,6 @@
           <field name="route_day" readonly="1"/>
           <field name="customer_id"/>
           <field name="name"/>
-          <field name="customer_id"/>
           <field name="visit_date" readonly="1"/>
           <field name="objective"/>
           <field name="check_in"/>
@@ -20,7 +19,7 @@
         </group>
         <group >
           <div class="d-flex align-items-center" style="gap: 10px;">
-              <div style="flex: 1;">
+              <!-- <div style="flex: 1;">
                   <label for="total_sales_amount"
                       style="
                           display: inline-block;
@@ -32,7 +31,7 @@
                       Total Sales Amount
                   </label>
                   <field name="total_sales_amount" readonly="1" style="width: 200px; height: 36px; line-height: 36px;"/>
-              </div>
+              </div> -->
               <div style="flex-shrink: 0;">
                   <button name="%(action_stock_by_customer)d"
                           string="View Customer Stock"

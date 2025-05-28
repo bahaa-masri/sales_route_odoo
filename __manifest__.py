@@ -2,6 +2,10 @@
     'name': 'Sales Route Planning',
     'version': '2.0',
     'summary': 'Manage sales routes and visits for Global Distributors',
+    'description': """
+        Internship project developed by Bahaa Masri for NavyBits.
+        Sales Route Planning and Monitoring System for the fictional company Global Distributors.
+    """,
     'author': 'bahaa',
     'category': 'Sales',
     'depends': ['base','sale_management'],

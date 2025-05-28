@@ -1,7 +1,12 @@
 # 📦 Sales Route Planning and Monitoring System
 
-## 🏢 Company Name (Optional)
-**Global Distributors**
+## About the Company
+
+Global Distributors is a fictional company that supplies products to a network of retail stores. This project simulates their need to manage sales routes, customer visits, and inventory monitoring at customer locations.
+
+The system aims to help sales managers efficiently assign routes, ensure regular customer visits, and keep track of stock levels to avoid stockouts.
+
+This project was developed as part of an internship challenge at NavyBits to showcase Odoo development skills in a real-world scenario.
 
 ## 📖 Project Description
 A system for planning and monitoring sales representatives’ visits to customers. 

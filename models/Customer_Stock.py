@@ -23,7 +23,7 @@ class CustomerStock(models.Model):
     string='Restock Status (Visual)',
     compute='_compute_restock_indicator',
     store=True
-)
+    )
     restock_status_for_color = fields.Selection(
     [
         ('yes', 'Needs Restocking'),
@@ -33,16 +33,18 @@ class CustomerStock(models.Model):
     string='Restock Status',
     compute='_compute_restock_status_for_color',
     store=True
-)
+    )
+    #Compute restock status for color display 
     @api.depends('needs_restock')
     def _compute_restock_status_for_color(self):
         for rec in self:
             rec.restock_status_for_color = 'yes' if rec.needs_restock else 'no'
-
-    @api.model
+    
+    # A salesperson can only see customers assigned to the same route they own
+    # @api.model
     def fields_get(self, allfields=None, attributes=None):
         res = super().fields_get(allfields=allfields, attributes=attributes)
-        if self.user_has_groups('sales_team.group_salesperson'):
+        if self.user_has_groups('sales_route.group_salesperson'):
             res['customer_id']['domain'] = "[('route_id.sales_rep_id.user_id', '=', uid)]"
         return res
     # Constraint: Prevent duplicate product for same customer
@@ -50,16 +52,19 @@ class CustomerStock(models.Model):
         ('unique_product_customer', 'unique(product_id, customer_id)', 'Each product can only have one stock record per customer.')
     ] 
 
+    #Compute the restock status text label (used for visuals in kanban)
     @api.depends('needs_restock')
     def _compute_restock_status(self):
         for rec in self:
             rec.restock_status = "Needs Restock" if rec.needs_restock else "OK"
-    
+
+    # Compute numeric indicator (used for visuals in kanban)
     @api.depends('needs_restock')
     def _compute_restock_indicator(self):
         for rec in self:
             rec.restock_indicator = 1 if rec.needs_restock else 0
-
+    
+    #Compute if restock is needed based on threshold
     @api.depends('quantity_on_hand', 'threshold')
     def _compute_needs_restock(self):
         for record in self:
@@ -70,6 +75,7 @@ class CustomerStock(models.Model):
             else:
                 record.needs_restock = False
 
+    #Manual method to reset restock counter
     def reset_restock_rounds(self):
         for record in self:
             record.restock_rounds = 0

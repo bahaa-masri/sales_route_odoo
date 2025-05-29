@@ -1,5 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+
+# Model for sales representatives
 class SalesRepresentative(models.Model):
     _name = 'sales.representative'
     _description = 'Sales Representative'
@@ -9,12 +11,14 @@ class SalesRepresentative(models.Model):
     phone = fields.Char(string='Phone')
     email = fields.Char(string='Email')
 
+# Model for regions
 class Region(models.Model):
     _name = 'region'
     _description = 'Region'
 
     name = fields.Char(string='Region', required=True)
 
+# Model for sales routes
 class SalesRoute(models.Model):
     _name = 'sales.route'
     _description = 'Sales Route'
@@ -32,6 +36,7 @@ class SalesRoute(models.Model):
         ('sunday', 'Sunday'),
     ], string='Visit Day')
 
+ # Ensure no overlapping routes for same sales rep in same region and day
     @api.constrains('region_ids', 'visit_days', 'sales_rep_id')
     def _check_route_overlap(self):
         for record in self:
@@ -44,7 +49,7 @@ class SalesRoute(models.Model):
             if overlap:
                 raise ValidationError(
                     "This sales representative already has a route in this region on this day!") 
-              
+    # Ensure route name is unique  
     @api.constrains('name')
     def _check_unique_name(self):
         for record in self:

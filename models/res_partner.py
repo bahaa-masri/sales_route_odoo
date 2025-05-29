@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from datetime import date, timedelta
 
+# Extending res.partner to add customer-specific fields
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
@@ -17,6 +18,8 @@ class ResPartner(models.Model):
     visit_not_done_recently = fields.Boolean(string="Visited in Last Week", compute="_compute_visit_not_done_recently", store=True)
     customer_visit_ids = fields.One2many('customer.visit', 'customer_id', string="Visits")
     sales_rep_id = fields.Many2one('sales.representative', related='route_id.sales_rep_id', store=True) 
+
+    # Compute assigned route based on customer's region
     @api.depends('region_id')
     def _compute_route(self):
         for partner in self:
@@ -27,7 +30,7 @@ class ResPartner(models.Model):
                 partner.route_id = route
             else:
                 partner.route_id = False
-
+    # Check if customer was visited in the last 7 days
     @api.depends('customer_visit_ids.visit_date')
     def _compute_visit_not_done_recently(self):
         for partner in self:
@@ -35,6 +38,8 @@ class ResPartner(models.Model):
                 lambda v: v.visit_date and v.visit_date >= date.today() - timedelta(days=7)
             )
             partner.visit_not_done_recently = bool(recent_visits)
+    
+    # Count products needing restock for the customer
     @api.depends('customer_stock_ids.needs_restock')
     def _compute_products_need_restock_count(self):
         for partner in self:

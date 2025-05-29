@@ -22,6 +22,9 @@ All data is visualized through a clear and intuitive dashboard.
    - Assign **Sales Manager** group to managers.
    - Assign **Salesperson** group to sales representatives.
 5. Make sure managers are **not** assigned the group **Sales / User: Own Documents Only**, as it may restrict access.
+6. **Important Note:**  
+   To avoid conflicts with your custom access rules for customers, make sure to **deactivate the following Record Rule**:
+   - **`res.partner.rule.private.employee`** 
 
 ## 👥 User Roles and Permissions
 
